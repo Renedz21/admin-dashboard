@@ -1,0 +1,44 @@
+<app-title title="Crear Producto"></app-title>
+
+
+<form [formGroup]="formGroup" (ngSubmit)="save()">
+    <div class="">
+        <label for="name">Nombre</label>
+        <input type="text" class="form-control" id="name" placeholder="Enter name" formControlName="name">
+    </div>
+    <div class="">
+        <label for="descripcion">Descripcion</label>
+        <input type="text" class="form-control" id="descripcion" placeholder="Enter name" formControlName="description">
+    </div>
+    <div class="">
+        <label for="name">Precio</label>
+        <input type="number" class="form-control" id="name" placeholder="Enter name" formControlName="price">
+    </div>
+    <div class="">
+        <label for="name">Stock</label>
+        <input type="number" class="form-control" id="name" placeholder="Enter name" formControlName="stock">
+    </div>
+    <label class=" text-sm text-gray-500 dark:text-gray-300" for="name">Imagen</label>
+    <div class="flex items-center justify-start gap-6">
+        <input type="file"
+            class="text-sm text-gray-600 bg-white rounded-lg file:bg-gray-200 file:text-gray-700 file:text-sm file:px-4 file:py-1 file:border-none file:rounded-full dark:file:bg-gray-800 dark:file:text-gray-200 dark:text-gray-300 placeholder-gray-400/70 dark:placeholder-gray-500 focus:border-blue-400 focus:outline-none"
+            (change)="uploadFile($event)" />
+        <div *ngIf="url" class="flex items-center justify-start gap-3">
+            Archivo subido
+            <i class='bx bx-check-circle bx-tada text-2xl text-green-600'></i>
+        </div>
+
+        <!-- <div *ngIf="url" class="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div> -->
+
+    </div>
+    <div class="">
+        <select name="" id="" formControlName="categoryId">
+            <option value="">Categoria</option>
+            <option *ngFor="let item of categories" [ngValue]="item.id">
+                {{item.name}}
+            </option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
