@@ -27,11 +27,20 @@
                                     {{ cell }}
                                 </ng-container>
                             </td>
+                            <td *ngIf="actions">
+                                <button type="button" *ngFor="let action of actions"
+                                    (click)="executeAction(action.action,row)">
+                                    {{action.label}}
+                                </button>
+                            </td>
 
                         </tr>
 
                     </tbody>
                 </table>
+
+                <app-pagination [currentPage]="currentPage" [totalItems]="data.length"
+                    [itemsPerPage]="itemsPerPage"></app-pagination>
 
             </div>
         </div>

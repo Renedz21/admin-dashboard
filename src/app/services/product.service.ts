@@ -15,7 +15,7 @@ export class ProductService {
   ) { }
 
   getAllProducts(): Observable<IProduct[]> {
-    return this.http.get<IProduct[]>(`${environment.apiUrl}/products?limit=10&offset=0`);
+    return this.http.get<IProduct[]>(`${environment.apiUrl}/products`);
   }
 
   create(product: Product): Observable<Product> {

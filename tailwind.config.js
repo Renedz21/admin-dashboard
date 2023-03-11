@@ -7,6 +7,9 @@ module.exports = {
     extend: {
       colors: {
         primary: "#11101d",
+      },
+      letterSpacing: {
+        widest: "80px",
       }
     },
   },

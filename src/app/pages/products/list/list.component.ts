@@ -14,6 +14,20 @@ export class ListComponent implements OnInit {
   headers: string[] = ['Nombre', 'Categoria', 'Descripcion', 'Precio', 'Stock', 'Imagen', 'Acciones']
   data: any[][] = [];
 
+  actions: any[] = [
+    {
+      label: 'Editar',
+      action: (row: any) => {
+        console.log(row);
+      }
+    },
+    {
+      label: 'Eliminar',
+      action: (row: any) => {
+        console.log(row);
+      }
+    }
+  ]
 
   constructor(
     private productService: ProductService,
@@ -37,7 +51,6 @@ export class ListComponent implements OnInit {
             product.price,
             product.stock,
             product.image,
-            // product.status,
           ]
         })
       },

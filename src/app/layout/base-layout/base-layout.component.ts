@@ -11,7 +11,7 @@ export class BaseLayoutComponent implements OnInit {
     {
       name: 'Dashboard',
       icon: 'bx bx-grid-alt',
-      link: '/'
+      link: '/dashboard'
     },
     {
       name: 'Usuarios',
@@ -32,12 +32,7 @@ export class BaseLayoutComponent implements OnInit {
       name: 'Ordenes',
       icon: 'bx bx-cart-alt',
       link: '/'
-    },
-    // {
-    //   name: 'Setting',
-    //   icon: 'bx bx-cog',
-    //   link: '/'
-    // },
+    }
   ]
   @ViewChild('closeBtn') closeBtn!: ElementRef;
   @ViewChild('sidebar') sidebar!: ElementRef;

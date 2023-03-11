@@ -1,15 +1,10 @@
-<div class="sidebar" (click)="showSidebar()" #sidebar>
+<div class="sidebar open" (click)="showSidebar()" #sidebar>
     <div class="logo-details">
-        <i class='bx bxl-amazon icon'></i>
+        <img src="../../../assets/icons8-dunkin-donuts.svg" alt="logo" class="w-8 mr-2 h-8 object-cover icon">
         <div class="logo_name">Donut's 4U</div>
         <i class='bx bx-menu' id="btn" #closeBtn></i>
     </div>
     <ul class="nav-list">
-        <!-- <li>
-            <i class='bx bx-search'></i>
-            <input type="text" placeholder="Search...">
-            <span class="tooltip">Search</span>
-        </li> -->
         <li *ngFor="let item of links">
             <a [routerLink]="item.link">
                 <i [class]="item.icon"></i>

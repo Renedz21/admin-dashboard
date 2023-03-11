@@ -1,0 +1,24 @@
+<div class="w-full h-screen">
+    <div class="relative">
+        <div class="bg-[#548776] h-96"></div>
+        <div class="absolute px-10 py-7 top-8 w-full">
+            <h1 class="mb-8 text-2xl">Dashboard</h1>
+            <div class="grid grid-cols-4 gap-8 justify-items-center">
+                <div class="bg-white p-8 w-full rounded-md flex items-center justify-between gap-7"
+                    *ngFor="let item of cards">
+                    <div class="flex-shrink-0">
+                        <div class="flex items-center justify-center rounded-full bg bg-[#b24344] text-white w-14 h-14">
+                            <i [class]="item.icon"></i>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-start gap-4">
+                        <h1 class="text-xl text-gray-900 font-semibold">{{item.title}}</h1>
+                        <p class="text-sm text-gray-700">
+                            {{item.description}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

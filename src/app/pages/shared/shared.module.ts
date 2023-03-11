@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { TitleComponent } from './title/title.component';
 import { TableComponent } from './table/table.component';
 import { NgOptimizedImage } from '@angular/common';
+import { PaginationComponent } from './pagination/pagination.component';
 
 
 @NgModule({
   declarations: [
     TitleComponent,
-    TableComponent
+    TableComponent,
+    PaginationComponent
   ],
   imports: [
     CommonModule,
