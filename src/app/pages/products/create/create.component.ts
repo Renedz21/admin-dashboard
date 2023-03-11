@@ -20,6 +20,8 @@ export class CreateComponent implements OnInit {
 
   url: string = '';
 
+  showAlert: boolean = false;
+
   categories: Category[] = [];
 
   product: Product = new Product();
@@ -55,6 +57,11 @@ export class CreateComponent implements OnInit {
     await this.storage.upload(filePath, file).then(() => {
       this.storage.ref(filePath).getDownloadURL().subscribe((url) => {
         this.url = url;
+        this.showAlert = true;
+
+        setTimeout(() => {
+          this.showAlert = false;
+        }, 5000);
       })
     })
   }

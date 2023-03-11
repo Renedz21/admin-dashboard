@@ -1,44 +1,85 @@
-<app-title title="Crear Producto"></app-title>
+<div class="h-full mt-14 w-full relative">
+    <div class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md">
+        <app-title title="Agregar Producto"></app-title>
+
+        <form [formGroup]="formGroup" (ngSubmit)="save()">
+            <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+                <div class="">
+                    <label class="text-gray-700 dark:text-gray-200" for="name">Nombre</label>
+                    <input type="text"
+                        class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-indigo-700"
+                        id="name" placeholder="Enter name" formControlName="name">
+                </div>
+                <div class="">
+                    <label class="text-gray-700 dark:text-gray-200" for="descripcion">Descripcion</label>
+                    <input type="text"
+                        class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-indigo-700"
+                        id="descripcion" placeholder="Enter name" formControlName="description">
+                </div>
+                <div class="">
+                    <label class="text-gray-700 dark:text-gray-200" for="name">Precio</label>
+                    <input type="number"
+                        class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-indigo-700"
+                        id="name" placeholder="Enter name" formControlName="price">
+                </div>
+                <div class="">
+                    <label class="text-gray-700 dark:text-gray-200" for="name">Stock</label>
+                    <input type="number"
+                        class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-indigo-700"
+                        id="name" placeholder="Enter name" formControlName="stock">
+                </div>
+                <div class="">
+                    <!-- text-sm text-gray-600 bg-white rounded-lg file:bg-gray-200 file:text-gray-700 file:text-sm file:px-4 file:py-1 file:border-none file:rounded-full dark:file:bg-gray-800 dark:file:text-gray-200 dark:text-gray-300 placeholder-gray-400/70 dark:placeholder-gray-500 focus:border-blue-400 focus:outline-none -->
+                    <label class="text-gray-700 dark:text-gray-200" for="imagen">Imagen</label>
+                    <input type="file" id="imagen"
+                        class="block w-full py-2 mt-2 file:bg-gray-200 file:text-gray-700 file:text-sm file:px-4 file:py-1 file:border-none file:rounded-full"
+                        (change)="uploadFile($event)" />
+                    <!-- <div *ngIf="!url" class="flex items-center justify-start gap-3 my-4">
+                            Archivo subido
+                            <i class='bx bx-check-circle bx-tada text-2xl text-green-600'></i>
+                        </div> -->
+                </div>
+                <div class="">
+                    <label class="text-gray-700 dark:text-gray-200" for="categoria">Categoria</label>
+                    <select id="categoria"
+                        class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-indigo-700"
+                        id="categoria" formControlName="categoryId">
+                        <option selected hidden disabled value="">Ingrese su categoria Categoria</option>
+                        <option *ngFor="let item of categories" [ngValue]="item.id">
+                            {{item.name}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="flex justify-end mt-6">
+                <button type="submit"
+                    class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600">
+                    Guardar
+                </button>
+            </div>
+        </form>
 
 
-<form [formGroup]="formGroup" (ngSubmit)="save()">
-    <div class="">
-        <label for="name">Nombre</label>
-        <input type="text" class="form-control" id="name" placeholder="Enter name" formControlName="name">
+
     </div>
-    <div class="">
-        <label for="descripcion">Descripcion</label>
-        <input type="text" class="form-control" id="descripcion" placeholder="Enter name" formControlName="description">
+</div>
+
+
+
+<div *ngIf="showAlert" class="absolute top-7 right-4 flex w-full max-w-sm overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800
+        transition-all duration-300 ease-linear transform scale-100">
+    <div class="flex items-center justify-center w-12 bg-emerald-500">
+        <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM16.6667 28.3333L8.33337 20L10.6834 17.65L16.6667 23.6166L29.3167 10.9666L31.6667 13.3333L16.6667 28.3333Z" />
+        </svg>
     </div>
-    <div class="">
-        <label for="name">Precio</label>
-        <input type="number" class="form-control" id="name" placeholder="Enter name" formControlName="price">
-    </div>
-    <div class="">
-        <label for="name">Stock</label>
-        <input type="number" class="form-control" id="name" placeholder="Enter name" formControlName="stock">
-    </div>
-    <label class=" text-sm text-gray-500 dark:text-gray-300" for="name">Imagen</label>
-    <div class="flex items-center justify-start gap-6">
-        <input type="file"
-            class="text-sm text-gray-600 bg-white rounded-lg file:bg-gray-200 file:text-gray-700 file:text-sm file:px-4 file:py-1 file:border-none file:rounded-full dark:file:bg-gray-800 dark:file:text-gray-200 dark:text-gray-300 placeholder-gray-400/70 dark:placeholder-gray-500 focus:border-blue-400 focus:outline-none"
-            (change)="uploadFile($event)" />
-        <div *ngIf="url" class="flex items-center justify-start gap-3">
-            Archivo subido
-            <i class='bx bx-check-circle bx-tada text-2xl text-green-600'></i>
+
+    <div class="px-4 py-2 -mx-3">
+        <div class="mx-3">
+            <span class="font-semibold text-emerald-500 dark:text-emerald-400">Archivo Subido!</span>
+            <p class="text-sm text-gray-600 dark:text-gray-200">La imagen se subió correctamente!</p>
         </div>
-
-        <!-- <div *ngIf="url" class="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div> -->
-
     </div>
-    <div class="">
-        <select name="" id="" formControlName="categoryId">
-            <option value="">Categoria</option>
-            <option *ngFor="let item of categories" [ngValue]="item.id">
-                {{item.name}}
-            </option>
-        </select>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+</div>

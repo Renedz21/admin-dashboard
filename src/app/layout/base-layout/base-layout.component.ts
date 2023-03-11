@@ -1,11 +1,11 @@
-import { Component, DoCheck, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { Component, DoCheck, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-base-layout',
   templateUrl: './base-layout.component.html',
   styleUrls: ['./base-layout.component.css']
 })
-export class BaseLayoutComponent {
+export class BaseLayoutComponent implements OnInit {
 
   links: any[] = [
     {
@@ -16,7 +16,7 @@ export class BaseLayoutComponent {
     {
       name: 'Usuarios',
       icon: 'bx bx-user ',
-      link: '/'
+      link: '/users'
     },
     {
       name: 'Categorias',
@@ -24,24 +24,31 @@ export class BaseLayoutComponent {
       link: '/categories'
     },
     {
-      name: 'Analytics',
-      icon: 'bx bx-pie-chart-alt-2',
-      link: '/'
+      name: 'Productos',
+      icon: 'bx bx-package',
+      link: '/products'
     },
     {
-      name: 'Order',
+      name: 'Ordenes',
       icon: 'bx bx-cart-alt',
       link: '/'
     },
-    {
-      name: 'Setting',
-      icon: 'bx bx-cog',
-      link: '/'
-    },
+    // {
+    //   name: 'Setting',
+    //   icon: 'bx bx-cog',
+    //   link: '/'
+    // },
   ]
-
-  @ViewChild('sidebar') sidebar!: ElementRef;
   @ViewChild('closeBtn') closeBtn!: ElementRef;
+  @ViewChild('sidebar') sidebar!: ElementRef;
+
+  constructor(
+    // private authService : AuthService,
+  ) { }
+
+  ngOnInit(): void {
+
+  }
 
   showSidebar() {
     const sidebar = this.sidebar.nativeElement;

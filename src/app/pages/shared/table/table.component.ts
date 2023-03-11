@@ -10,4 +10,6 @@ export class TableComponent {
   @Input() headers!: string[];
   @Input() data!: any[][];
   @Input() columnaTitulo!: number;
+  @Input() columnaAdmin!: number;
+  @Input() description!: number;
 }
