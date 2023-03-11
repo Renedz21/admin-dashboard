@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterContentChecked, AfterViewChecked, Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { IProduct } from 'src/app/models/interfaces/product.interface';
 import { ProductService } from 'src/app/services/product.service';
@@ -10,7 +10,10 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ListComponent implements OnInit {
 
-  products: IProduct[] = [];
+
+  headers: string[] = ['Nombre', 'Categoria', 'Descripcion', 'Precio', 'Stock', 'Imagen', 'Acciones']
+  data: any[][] = [];
+
 
   constructor(
     private productService: ProductService,
@@ -26,7 +29,17 @@ export class ListComponent implements OnInit {
     this.productService.getAllProducts().subscribe({
       next: (products) => {
         console.log(products);
-        this.products = products;
+        this.data = products.map(product => {
+          return [
+            product.name,
+            product.category.name,
+            product.description,
+            product.price,
+            product.stock,
+            product.image,
+            // product.status,
+          ]
+        })
       },
       error: (err) => {
         console.log(err);

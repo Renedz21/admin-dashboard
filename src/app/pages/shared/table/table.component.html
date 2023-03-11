@@ -1,0 +1,46 @@
+<div class="flex flex-col mt-6">
+    <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+            <div class="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">
+
+                <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                    <thead class="bg-gray-50 dark:bg-gray-800">
+                        <tr>
+                            <th *ngFor="let header of headers" scope="col"
+                                class="px-12 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                {{header}}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
+                        <tr *ngFor="let row of data">
+                            <td *ngFor="let cell of row"
+                                class="px-4 py-4 text-sm whitespace-nowrap text-ellipsis overflow-hidden text-center"
+                                [ngClass]="{
+                                'font-medium text-gray-800 dark:text-white cursor-pointer hover:text-indigo-400': columnaTitulo == row.indexOf(cell)
+                            }">
+                                <!-- 
+
+                                 [ngClass]="{
+                                        'text-emerald-500 bg-emerald-100/60': cell === 'Activo',
+                                        'text-red-500 bg-red-100/60':  cell === 'Inactivo'
+                                    }"
+                             -->
+                                <ng-container *ngIf="headers[row.indexOf(cell)] === 'Imagen'">
+                                    <img class="rounded-full object-contain w-20 h-20 m-auto" height="100" width="100"
+                                        [ngSrc]="cell" alt="Imagen">
+                                </ng-container>
+                                <ng-container *ngIf="headers[row.indexOf(cell)] !== 'Imagen'">
+                                    {{ cell }}
+                                </ng-container>
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
